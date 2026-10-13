@@ -5,8 +5,6 @@ use bevy::{
     render::render_resource::AsBindGroup,
     sprite_render::{Material2d, Material2dPlugin},
 };
-// use bevy_inspector_egui::quick::WorldInspectorPlugin;
-use bevy_pancam::{PanCam, PanCamPlugin};
 use noisy_bevy::{NoisyShaderPlugin, simplex_noise_2d_seeded};
 
 fn main() {
@@ -16,9 +14,7 @@ fn main() {
         .add_plugins((
             DefaultPlugins,
             NoisyShaderPlugin,
-            PanCamPlugin,
             Material2dPlugin::<AsteroidBackgroundMaterial>::default(),
-            // WorldInspectorPlugin::new()
         ))
         .add_systems(Startup, setup)
         .add_systems(Update, expand_asteroids)
@@ -34,7 +30,6 @@ fn setup(mut commands: Commands) {
             },
             ..OrthographicProjection::default_2d()
         }),
-        PanCam::default(),
     ));
 
     commands.spawn(AsteroidBundle::default());

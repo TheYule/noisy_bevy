@@ -17,10 +17,10 @@ bevy = { version = "0.20", default-features = false, features = [
     "bevy_sprite_render",
     "bevy_window",
     "bevy_winit",
+    "pan_camera",
     "x11",         # github actions runners don't have libxkbcommon installed, so can't use wayland
 ] }
 rand = "0.9"
-bevy_pancam = { version = "0.21", features = ["bevy_egui_0_40"] }
 insta = "1.21"
 
 [features]

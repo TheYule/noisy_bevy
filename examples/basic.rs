@@ -4,13 +4,12 @@
 //! with corresponding colors.
 
 use bevy::{camera::ScalingMode, math::vec2, prelude::*};
-use bevy_pancam::{PanCam, PanCamPlugin};
 use noisy_bevy::fbm_simplex_2d;
 
 fn main() {
     App::new()
         .insert_resource(ClearColor(Color::BLACK))
-        .add_plugins((DefaultPlugins, PanCamPlugin))
+        .add_plugins(DefaultPlugins)
         .add_systems(Startup, setup)
         .run();
 }
@@ -24,7 +23,6 @@ fn setup(mut commands: Commands) {
             },
             ..OrthographicProjection::default_2d()
         }),
-        PanCam::default(),
     ));
 
     const FREQUENCY_SCALE: f32 = 0.05;
