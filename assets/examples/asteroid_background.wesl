@@ -1,25 +1,23 @@
-#import noisy_bevy::fbm_simplex_2d_seeded
-#import bevy_sprite::mesh2d_functions::{
-    get_world_from_local,
-    mesh2d_position_local_to_clip,
-}
+import noisy_bevy::fbm_simplex_2d_seeded;
+import bevy_sprite::mesh2d_functions::{get_world_from_local, mesh2d_position_local_to_clip};
 
 struct AsteroidMaterial {
-    params: vec4<f32>
+    params: vec4<f32>,
 }
 
-@group(2) @binding(0) var<uniform> material: AsteroidMaterial;
+@group(2) @binding(0)
+var<uniform> material: AsteroidMaterial;
 
 struct Vertex {
     @builtin(instance_index) instance_index: u32,
     @location(0) position: vec3<f32>,
     @location(1) blend_color: vec4<f32>,
-};
+}
 
 struct VertexOutput {
     @builtin(position) clip_position: vec4<f32>,
     @location(0) object_position: vec2<f32>,
-};
+}
 
 @vertex
 fn vertex(vertex: Vertex) -> VertexOutput {
@@ -32,9 +30,7 @@ fn vertex(vertex: Vertex) -> VertexOutput {
 }
 
 @fragment
-fn fragment(
-    vertex_output: VertexOutput,
-) -> @location(0) vec4<f32> {
+fn fragment(vertex_output: VertexOutput) -> @location(0) vec4<f32> {
     var p = vertex_output.object_position;
     let params = material.params;
     let freq_scale = params.x;

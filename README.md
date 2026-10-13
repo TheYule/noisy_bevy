@@ -4,7 +4,7 @@
 ![MIT](https://img.shields.io/badge/license-MIT-blue.svg)
 [![docs.rs](https://img.shields.io/docsrs/noisy_bevy)](https://docs.rs/noisy_bevy)
 
-Simple stupid noise primitives for glam (`Vec2`, `Vec3`) and WGSL.
+Simple stupid noise primitives for glam (`Vec2`, `Vec3`) and WESL.
 
 - Integrates with Bevy seamlessly
 - Same results on the CPU and GPU (not bit-level perfect, though)
@@ -40,7 +40,7 @@ let p = Vec2::new(12.3, 45.6);
 let value = simplex_noise_2d(p);
 ```
 
-### From WGSL shaders
+### From WESL shaders
 
 First add the plugin to the Bevy app:
 
@@ -51,8 +51,8 @@ App::new()
 
 Then use it in your shaders:
 
-```wgsl
-#import noisy_bevy::simplex_noise_2d
+```wesl
+import noisy_bevy::simplex_noise_2d;
 
 // ...
 
@@ -60,7 +60,7 @@ let p = vec2(12.3, 45.6);
 let value = simplex_noise_2d(p);
 ```
 
-See the [`asteroids example`](https://github.com/johanhelsing/noisy_bevy/blob/main/examples/asteroids.rs), for an example that uses noise to procedurally generate a tilemap on the CPU and a matching background in a wgsl shader.
+See the [`asteroids example`](https://github.com/johanhelsing/noisy_bevy/blob/main/examples/asteroids.rs), for an example that uses noise to procedurally generate a tilemap on the CPU and a matching background in a wesl shader.
 
 ## Bevy Version Support
 
@@ -68,7 +68,8 @@ The `main` branch targets the latest bevy release.
 
 |bevy|noisy\_bevy|
 |----|-----------|
-|0.19| 0.14, main|
+|0.20| 0.15, main|
+|0.19| 0.14      |
 |0.18| 0.13      |
 |0.17| 0.11      |
 |0.16| 0.9, 0.10 |
